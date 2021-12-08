@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 class="text-center p-3">List of Tasks</h2>
+    <hr>
+    <div class="row" *ngIf="!isLoading">
+        <div class="col-lg-4 p-2" *ngFor="let task of Tasks">
+            <div class="card">
+                <div class="card-header alert" [ngClass]="getAlertClasses(task)">
+                    {{ task.id }}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ task.name }}</h4>
+                    <!--<p class="card-text">{{ task.assignee }}</p>-->
+                    <p class="card-text">{{ task.taskDefinitionKey }}</p>
+                    <p class="card-text">{{ task.assignee || 'No Assigne' }}</p>
+                    <hr>
+                    <p class="card-text">{{ task.created | date:'medium' }}</p>
+                </div>
+                <div class="card-footer">
+                    <button (click)="openTask(task.id)" class="btn btn-success m-1">View Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

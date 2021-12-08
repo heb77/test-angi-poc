@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <div *ngIf="!isLoading" class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    Monitoring - Zahlungsauftrag - <strong>Tasks <span class="myColorRed">( {{ this.Tasks.length
+                            }} )</span></strong>
+                    <button (click)="refreshComponent()" class="asbBtn btn btn-success float-end"><i
+                            class="bi bi-arrow-counterclockwise"></i></button>
+                </div>
+                <div class="card-body">
+                    <div class="row m-2">
+                        <button (click)="routeToList('maccSelection')" class="alert alert-primary asbHover">Macc
+                            Selection count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'maccSelection').length}}</button>
+                    </div>
+                    <div class="row m-2">
+                        <button (click)="routeToList('inlandForm')" class="alert alert-info asbHover">Inland Formular
+                            count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'inlandForm').length}}</button>
+                    </div>
+                    <div class="row m-2">
+                        <button (click)="routeToList('auslandForm')" class="alert alert-info asbHover">Ausland Formular
+                            count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'auslandForm').length}}</button>
+                    </div>
+                    <div class="row m-2">
+                        <button (click)="routeToList('docSigning')" class="alert alert-warning">Document Signing count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'docSigning').length}}</button>
+                    </div>
+                    <div class="row m-2">
+                        <button (click)="routeToList('checkSignatures')" class="alert alert-success">Check Signatures
+                            count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'checkSignatures').length}}</button>
+                    </div>
+                    <!--                     <div class="row m-2">
+                        <button (click)="routeToList('resultForm')" class="alert alert-success asbHover">Result Formular
+                            count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'resultForm').length}}</button>
+                    </div> -->
+                    <div class="row m-2">
+                        <button (click)="routeToList('errorForm')" class="col-md-12 alert alert-danger asbHover">Result
+                            Error count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':'errorForm').length}}</button>
+                    </div>
+                    <div class="row m-2">
+                        <button class="alert alert-secondary">Unknown Task count:
+                            {{(this.Tasks | ASB_Filter:'taskDefinitionKey':null).length}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

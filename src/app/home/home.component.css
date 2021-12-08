@@ -1,0 +1,11 @@
+.myColorRed {
+    color: red;
+}
+
+.asbHover {
+    cursor: pointer;
+}
+
+.asbBtn {
+    padding: 3px 10px !important;
+}

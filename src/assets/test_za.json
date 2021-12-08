@@ -1,0 +1,24 @@
+{
+    zahlungsauftrag: {
+    currency: 'CHF',
+    auftragsArt: '020050',
+    client: {
+        anrede: $scope.clientInfo.domiziladresse.salut,
+        vorname: $scope.clientInfo.vorname,
+        nachname: $scope.clientInfo.nachname,
+        strasse: $scope.clientInfo.domiziladresse.street,
+        strassenNr: $scope.clientInfo.domiziladresse.strNo,
+        plz: $scope.clientInfo.domiziladresse.zip,
+        ort: $scope.clientInfo.domiziladresse.city,
+        Land: $scope.clientInfo.domiziladresse.country,
+        customerIBAN: 'CH21000012345698765432',
+        AccountName: $scope.positionName,
+        bpId: $scope.clientInfo.bpKey,
+        personId: $scope.clientInfo.bpKey,
+        bpSortAlpha: $scope.clientInfo.bpKey
+    },
+    bookingText: 'sofort',
+    chargeAssignment: 'SHA',
+    modality: 'urgent'
+    }
+}

@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <div *ngIf="!isLoading" class="row">
+        <div class="alert alert-danger">
+                <p>An Error occured:</p>
+                <p><strong>{{processInstanceVariables.Error_Message.value}}</strong></p>
+                <p>Person with ID: {{processInstanceVariables.personId.value}}</p>
+                <hr>
+            <div>
+                <button class="btn-primary btn m-1" (click)="backHome()">Back to
+                    Tasklist</button>
+            </div>
+        </div>
+    </div>
+</div>

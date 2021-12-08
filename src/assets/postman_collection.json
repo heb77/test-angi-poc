@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "7e90ace6-4e89-4016-9aab-0128b025bdc2",
+		"name": "Camunda REST Calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/:GET All Tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task?sortBy=created&sortOrder=desc&firstResult=0&maxResults=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "created"
+						},
+						{
+							"key": "sortOrder",
+							"value": "desc"
+						},
+						{
+							"key": "firstResult",
+							"value": "0"
+						},
+						{
+							"key": "maxResults",
+							"value": "100"
+						},
+						{
+							"key": "processInstanceId",
+							"value": "ab5f7851-2c27-11ec-aee2-0050569364da",
+							"disabled": true
+						},
+						{
+							"key": "taskDefinitionKey",
+							"value": "resultForm",
+							"disabled": true
+						},
+						{
+							"key": "assignee",
+							"value": "demo",
+							"disabled": true
+						},
+						{
+							"key": "candidateGroup",
+							"value": "asb",
+							"disabled": true
+						},
+						{
+							"key": "candidateUser",
+							"value": "john",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ":/GET Task by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/636302fc-2d8b-11ec-b4c7-0050569364da?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"636302fc-2d8b-11ec-b4c7-0050569364da"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "name",
+							"disabled": true
+						},
+						{
+							"key": "sortOrder",
+							"value": "asc",
+							"disabled": true
+						},
+						{
+							"key": "firstResult",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "maxResults",
+							"value": "19",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:GET Variables of a single process Instance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/process-instance/552284fa-2d03-11ec-b81d-0050569364da/variables",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"process-instance",
+						"552284fa-2d03-11ec-b81d-0050569364da",
+						"variables"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:GET All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ":/GET All Groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/group?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"group"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "ASB",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": ":/GET User Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:GET Group Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/group/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"group",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Claim task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"john\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/c1a351dd-206e-11ec-9d7f-0242ac110002/claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"c1a351dd-206e-11ec-9d7f-0242ac110002",
+						"claim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Unclaim Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/636302fc-2d8b-11ec-b4c7-0050569364da/unclaim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"636302fc-2d8b-11ec-b4c7-0050569364da",
+						"unclaim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Complete Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"variables\": {\n        \"approved\": {\n            \"value\": \"True\",\n            \"type\": \"Boolean\"\n        }\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/c1a351dd-206e-11ec-9d7f-0242ac110002/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"c1a351dd-206e-11ec-9d7f-0242ac110002",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Submit Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"variables\": {\r\n        \"zahlungsauftragIban\": {\r\n            \"type\": \"string\",\r\n            \"value\": \"CH9600761042063237780\"\r\n        },\r\n        \"zahlungsauftrag\": {\r\n            \"type\": \"string\",\r\n            \"value\": {\r\n                \"zahlungsauftrag\": {\r\n                    \"currency\": \"CHF\",\r\n                    \"auftragsArt\": \"020050\",\r\n                    \"client\": {\r\n                        \"anrede\": \"Herr\",\r\n                        \"vorname\": \"Konstantinos\",\r\n                        \"nachname\": \"Tsolakidis\",\r\n                        \"strasse\": \"Teststrasse\",\r\n                        \"strassenNr\": 4,\r\n                        \"plz\": 60100,\r\n                        \"ort\": \"Aarau\",\r\n                        \"Land\": \"Schweiz\",\r\n                        \"customerIBAN\": \"CH21000012345698765432\",\r\n                        \"AccountName\": \"Testaccount\",\r\n                        \"bpId\": 12121221,\r\n                        \"personId\": 1212122,\r\n                        \"bpSortAlpha\": 12121221\r\n                    },\r\n                    \"bookingText\": \"sofort\",\r\n                    \"chargeAssignment\": \"SHA\",\r\n                    \"modality\": \"urgent\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/c83411ad-2cb9-11ec-baf9-0050569364da/submit-form",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"c83411ad-2cb9-11ec-baf9-0050569364da",
+						"submit-form"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Delete Task",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deleteReason\": \"adsad\",\n\t\"processInstanceIds\": [\"df837edb-2b69-11ec-9209-0050569364da\", \"f442aa00-2b6a-11ec-9209-0050569364da\", \"f7562ba0-2b6a-11ec-9209-0050569364da\", \"fa9aa850-2b6a-11ec-9209-0050569364da\", \"749432b4-2bef-11ec-8c2b-0050569364da\", \"80f86739-2be9-11ec-8e17-005056938069\", \"3c8822eb-2bf1-11ec-9b8d-0050569364da\", \"24f6933b-2bef-11ec-8c2b-0050569364da\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/process-instance/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"process-instance",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Set Assignee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"john\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/task/636302fc-2d8b-11ec-b4c7-0050569364da/assignee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"task",
+						"636302fc-2d8b-11ec-b4c7-0050569364da",
+						"assignee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Create a new Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"asb\",\n\t\"name\": \"ASB\",\n\t\"type\": \"Admins\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/group/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"group",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:POST Create new User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"profile\": {\n\t\t\"id\": \"Konsti\",\n\t\t\"firstName\": \"Konstantinos\",\n\t\t\"lastName\": \"Tsolakidis\",\n\t\t\"email\": \"konstantinos.tsolakidis@akb.ch\"\n\t},\n\t\"credentials\": {\n\t\t\"password\": \"secretPassword\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:PUT Update users profile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"Konsti\",\n\t\"firstName\": \"lala\",\n\t\"lastName\": \"lalalal\",\n\t\"email\": \"lalal@lalal.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user/Konsti/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user",
+						"Konsti",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:PUT Update users credentials",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"123\",\n\t\"authenticatedUserPassword\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user/konsti/credentials",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user",
+						"konsti",
+						"credentials"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/:DELETE Users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/user/Konsti",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"user",
+						"Konsti"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

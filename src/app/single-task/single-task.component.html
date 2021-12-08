@@ -1,0 +1,49 @@
+<div *ngIf="!isLoading" class="container mt-4">
+    <h2 class="text-center p-3">Task overview</h2>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-8 p-2">
+            <div class="card border">
+                <div class="card-header alert alert-primary">
+                    {{ singleTask.id }} <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"
+                        class="btn btn-danger float-end">X</button>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ singleTask.name }}</h5>
+                    <p class="card-text">{{ singleTask.processDefinitionId }}</p>
+                    <p class="card-text">{{ singleTask.assignee || 'No Assigne' }}</p>
+                    <p class="card-text">{{ singleTask.taskDefinitionKey }}</p>
+                    <hr>
+                    <p class="card-text">{{ singleTask.created | date: 'medium' }}</p>
+                </div>
+                <div class="card-footer">
+                    <button (click)="startTask()" class="btn-success btn m-1">Open Task</button>
+                    <button (click)="backToTaskList()" class="btn-warning btn m-1 float-end">Back to Tasklist</button>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Deleting task: {{singleTask.name}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this task?</p>
+                                <p>This action is not reversable!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button data-bs-dismiss="modal" type="button" (click)="deleteTask()"
+                                    class="btn btn-danger">Yes i am
+                                    sure</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

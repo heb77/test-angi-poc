@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+select.ng-invalid.ng-touched, input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+body {
+    min-height: 400px;
+    margin-bottom: 150px;
+    clear: both;
+}
+
+li {
+    cursor: pointer;
+}

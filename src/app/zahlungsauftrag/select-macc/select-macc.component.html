@@ -1,0 +1,111 @@
+<div class="container mt-4">
+    <div *ngIf="!isLoading" class="row justify-content-center">
+        <div class="col-lg-10 p-2">
+            <form [formGroup]="maccForm" (ngSubmit)="onSubmit(maccForm.value)">
+                <div class="card border">
+                    <div id="header" class="card-header alert alert-primary">
+                        <h3 class="text-center mb-3 text-dark">Step 1 / 5 - Macc Selection</h3>
+                        <div class="progress" style="height: 2px;">
+                            <div class="progress-bar" style="width: 20%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="clientInfo" class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="card-title mb-4">Client Info</h4>
+                            </div>
+                        </div>
+                        <div id="clientName" class="row">
+                            <div class="col-lg-6">
+                                <label class="form-label">Name</label>
+                                <input class="form-control mb-2" type="text" disabled [(ngModel)]="clientInfo.name"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="clientBirthdate" class="row">
+                            <div class="col-lg-3">
+                                <label class="form-label">Geburtsdatum</label>
+                                <input class="form-control mb-2" type="text" disabled
+                                    [(ngModel)]="clientInfo.geburtsdatum" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="clientPersonIds" class="row">
+                            <div class="col-lg-3">
+                                <label class="form-label">Person ID</label>
+                                <input class="form-control mb-2" type="text" disabled [(ngModel)]="clientInfo.personId"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="form-label">Person Key</label>
+                                <input class="form-control mb-2" type="text" disabled [(ngModel)]="clientInfo.personKey"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="clientBpIds" class="row">
+                            <div class="col-lg-3">
+                                <label class="form-label">BP ID</label>
+                                <input class="form-control mb-2" type="text" disabled [(ngModel)]="clientInfo.bpId"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="form-label">BP Key</label>
+                                <input class="form-control mb-2" type="text" disabled [(ngModel)]="clientInfo.bpKey"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div id="paymentMethod" class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="card-title mb-4">Payment Method</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="inland"
+                                    formControlName="paymentMethodSelect">
+                                <label class="form-check-label mb-2">Zahlungsauftrag Inland</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="swift"
+                                    formControlName="paymentMethodSelect">
+                                <label class="form-check-label">Zahlungsauftrag Ausland (SWIFT)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="maccInfo" class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="card-title mb-4">Account Selection</h4>
+                            </div>
+                        </div>
+                        <div *ngIf="maccInfo.containers.length > 0">
+                            <div *ngFor="let container of maccInfo.containers">
+                                <div class="alert alert-primary">
+                                    <strong>Container: {{container.containerId}} | {{container.name}}</strong>
+                                </div>
+                                <div class="alert alert-warning" *ngFor="let position of container.positions">
+                                    <input class="form-check-input" type="radio" [value]="position"
+                                        formControlName="maccs">
+                                    <label class="form-check-label ps-2">
+                                        {{position.name}}</label>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footer" class="card-footer">
+                        <button class="btn btn-primary m-1" type="submit" [disabled]="!maccForm?.valid">Continue with
+                            Task</button>
+                        <button class="btn-danger btn m-1 float-end" (click)="backToTaskList()">Back to
+                            Tasklist</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

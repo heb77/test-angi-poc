@@ -1,0 +1,252 @@
+<div class="container mt-4">
+    <div *ngIf="!isLoading" class="row justify-content-center">
+        <div class="col-md-10 p-2">
+            <form [formGroup]="inlandForm" (ngSubmit)="onSubmit(inlandForm.value)">
+                <div class="card border">
+                    <div id="header" class="card-header alert alert-primary">
+                        <h3 class="text-center mb-3 text-dark">Step 2 / 5 - Payment ( Inland )</h3>
+                        <div class="progress" style="height: 2px;">
+                            <div class="progress-bar" style="width: 40%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="Belastungskonto" class="row">
+                            <div class="col-md-12">
+                                <h4 class="card-title mb-4">Belastungskonto</h4>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="alert alert-success">{{processInstanceVariables.positionName.value}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="Auftraggeber" class="row">
+                            <h4 class="card-title mb-4">Auftraggeber</h4>
+                            <div class="col-md-5">
+                                <label class="form-label">Partner Nummer</label>
+                                <input class="form-control mb-2" disabled type="text" [(ngModel)]="clientInfo.bpKey"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="Anrede" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Anrede</label>
+                                <input class="form-control mb-2" disabled type="text"
+                                    [(ngModel)]="clientInfo.domiziladresse.salut" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="VornameName" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Vorname</label>
+                                <input class="form-control mb-2" disabled type="text" [(ngModel)]="clientInfo.vorname"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Nachname</label>
+                                <input class="form-control mb-2" disabled type="text" [(ngModel)]="clientInfo.nachname"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="Strasse" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Strasse</label>
+                                <input class="form-control mb-2" disabled type="text"
+                                    [(ngModel)]="clientInfo.domiziladresse.street"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Strassennummer</label>
+                                <input class="form-control mb-2" disabled type="text"
+                                    [(ngModel)]="clientInfo.domiziladresse.strNo" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="PLZ" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Postleitzahl</label>
+                                <input class="form-control mb-2" disabled type="text"
+                                    [(ngModel)]="clientInfo.domiziladresse.zip" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Ort</label>
+                                <input class="form-control mb-2" disabled type="text"
+                                    [(ngModel)]="clientInfo.domiziladresse.city" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div id="Land" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Land</label>
+                                <input type="text" disabled class="form-control mb-2"
+                                    [(ngModel)]="clientInfo.domiziladresse.country"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="Ausführungsdetails" class="row">
+                            <h4 class="card-title mb-4">Ausführungsdetails</h4>
+                            <div class="col-md-5">
+                                <label class="form-label">Ausführungsdatum</label>
+                                <input class="form-control mb-2" formControlName="paymentDateExecution" type="text"
+                                    bsDatepicker placement="top" [minDate]="minDate"
+                                    [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY' }">
+                            </div>
+                        </div>
+                        <div id="Währung" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Währung</label>
+                                <select class="form-select" formControlName="currency">
+                                    <option value="CHF">CHF - Schweizer Franken</option>
+                                    <option value="EU">EU - Euro</option>
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="GBP">GBP - Pfund Sterling</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Betrag</label>
+                                <input class="form-control" type="number" formControlName="amount">
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="Begünstigter" class="row">
+                            <h4 class="card-title mb-4">Begünstigter</h4>
+                            <div class="col-md-5">
+                                <label class="form-label">IBAN</label>
+                                <input class="form-control mb-2" type="text" formControlName="iban">
+                            </div>
+                        </div>
+                        <div id="Bankkonto-Nr" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Bankkonto-Nr (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="bankkonto">
+                            </div>
+                        </div>
+                        <div id="empfaengerDaten" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Vorname (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="empfaengerVorname">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Name / Firma</label>
+                                <input class="form-control mb-2" type="text" formControlName="empfaengerName">
+                            </div>
+                        </div>
+                        <div id="empfaengerAddr" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Strasse (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="empfaengerStr">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Strassennummer (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="empfaengerStrNr">
+                            </div>
+                        </div>
+                        <div id="empfaengerPlz" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Postleitzahl (Optional)</label>
+                                <input class="form-control mb-2" type="number" formControlName="empfaengerPlz">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Ort (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="empfaengerOrt">
+                            </div>
+                        </div>
+                        <div id="empfaengerLand" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Land</label>
+                                <select class="form-select" formControlName="empfaengerLand">
+                                    <option value="CH">Schweiz</option>
+                                    <option value="DE">Deutschland</option>
+                                    <option value="IT">Italien</option>
+                                    <option value="GR">Greece</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="BankBegünstigter" class="row">
+                            <h4 class="card-title mb-4">Bank des/der Begünstigten</h4>
+                            <div class="col-md-5">
+                                <label class="form-label">BIC (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="bic">
+                            </div>
+                        </div>
+                        <div id="Clearing" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Nationale Clearing Nr.</label>
+                                <input class="form-control mb-2" type="number" formControlName="clearing">
+                            </div>
+                        </div>
+                        <div id="BankName" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Bankname</label>
+                                <input class="form-control mb-2" type="text" formControlName="bankName">
+                            </div>
+                        </div>
+                        <div id="BankStr" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Strasse (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="bankStr">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Strassennummer (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="bankStrNr">
+                            </div>
+                        </div>
+                        <div id="BankPLZ" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Postleitzahl (Optional)</label>
+                                <input class="form-control mb-2" type="number" formControlName="bankPLZ">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label">Ort (Optional)</label>
+                                <input class="form-control mb-2" type="text" formControlName="bankOrt">
+                            </div>
+                        </div>
+                        <div id="BankLand" class="row">
+                            <div class="col-md-5">
+                                <label class="form-label">Land</label>
+                                <select class="form-select" formControlName="bankLand">
+                                    <option value="CH">Schweiz</option>
+                                    <option value="DE">Deutschland</option>
+                                    <option value="IT">Italien</option>
+                                    <option value="GR">Greece</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div id="mitteilungFuerBeguenstigster" class="row">
+                            <h4 class="card-title mb-4">Mitteilungen</h4>
+                            <div class="col-md-12">
+                                <label class="form-label">Mitteilung für Begünstigter</label>
+                                <textarea class="form-control mb-2" rows="3"
+                                    formControlName="mitteilungFuerBeguenstigster"></textarea>
+                            </div>
+                        </div>
+                        <div id="mitteilungFuerAuftraggeber" class="row">
+                            <div class="col-md-12">
+                                <label class="form-label">Mitteilung für Auftraggeber</label>
+                                <textarea class="form-control mb-2" rows="3"
+                                    formControlName="mitteilungFuerAuftraggeber"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="loadingSpinner" id="footer" class="card-footer">
+                        <button *ngIf="loadingSpinner" class="btn btn-primary m-1" disabled type="button">Loading your
+                            request, this might take some seconds ...</button>
+                    </div>
+                    <div *ngIf="!loadingSpinner" id="footer" class="card-footer">
+                        <button class="btn btn-primary m-1" type="submit" [disabled]="!inlandForm?.valid">Continue with
+                            Task</button> |
+                        <button class="btn btn-warning m-1" type="button" [disabled]="!inlandForm?.touched"
+                            (click)="resetForm()">Reset Form</button> |
+                        <button (click)="setTestForm()" class="btn btn-secondary m-1" type="button">Set dummy
+                            data</button>
+                        <button class="btn-danger btn m-1 float-end" (click)="backToTaskList()">Back to
+                            Tasklist</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

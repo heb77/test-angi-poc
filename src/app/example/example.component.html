@@ -1,0 +1,12 @@
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <input class="form-control" type="text" (keyup)="onSearch($event)">
+        </div>
+    </div>
+</div>
+<hr>
+<div *ngIf="(behaviorSubject | async)" class="container">
+    <div class="alert alert-primary"> TEST </div>
+</div>
